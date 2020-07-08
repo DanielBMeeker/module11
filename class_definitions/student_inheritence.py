@@ -1,5 +1,5 @@
 """
-Program: student_inheritence
+Program: student_inheritance
 Author: Daniel Meeker
 Date: 7/8/2020
 
