@@ -10,22 +10,22 @@ class Person:
         name_characters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-")
         if not (name_characters.issuperset(lname) and name_characters.issuperset(fname)):
             raise ValueError
-        self.last_name = lname
-        self.first_name = fname
-        self.address = addy
+        self._last_name = lname
+        self._first_name = fname
+        self._address = addy
 
     def display(self):
-        return (str(self.last_name) + ", " + str(self.first_name)
-                + '\n' + self.address.display())
+        return (str(self._last_name) + ", " + str(self._first_name)
+                + '\n' + self._address.display())
 
     def __str__(self):
-        return str(self.last_name) + ", " + str(self.first_name)
+        return str(self._last_name) + ", " + str(self._first_name)
 
     def __repr__(self):
         if self.address == '':
-            return "{self.__class__.__name__}('{self.last_name}', '{self.first_name}')".format(self=self)
+            return "{self.__class__.__name__}('{self._last_name}', '{self._first_name}')".format(self=self)
         else:
-            return "{self.__class__.__name__}('{self.last_name}', '{self.first_name}', '{self.address}')".format(self=self)
+            return "{self.__class__.__name__}('{self._last_name}', '{self._first_name}', '{self._address}')".format(self=self)
 
 
 class Address:
