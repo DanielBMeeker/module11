@@ -1,3 +1,11 @@
+"""
+Program: salaried_employee.py
+Author: Daniel Meeker
+Date: 7/8/2020
+
+This program demonstrates inheritance by using the employee base class
+and having two sub classes inherit from it. This is the salaried employee class
+"""
 from class_definitions.employee import Employee
 import datetime
 import locale  # to make formatting the currency a lot easier
@@ -25,7 +33,7 @@ class SalariedEmployee(Employee):
     def give_raise(self):
         """
         When called this method adds $5,000 to the employee pay
-        :return: no return
+        :return: new hourly pay
         """
         bonus = 5000
         self._salary += bonus
@@ -42,12 +50,20 @@ class SalariedEmployee(Employee):
                 + pay + "\nStart Date: ".format(self=self) + str(date))
 
     def __str__(self):
+        """
+        Overrides the str function to make it more descriptive
+        :return:
+        """
         date = self._start_date.strftime("%m-%d-%Y")
         pay = locale.currency(self._salary, True, True)
         return (super().__str__() + "\n{self._phone_number} \nSalary: ".format(self=self)
                 + pay + "\nStart Date: ".format(self=self) + str(date))
 
     def __repr__(self):
+        """
+        Overrides the repr function so that it mimics the class constructor
+        :return:
+        """
         return super().__repr__() + ", ({self._start_date}), + {self._salary})".format(self=self)
 
 
