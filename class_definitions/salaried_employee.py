@@ -1,4 +1,7 @@
 from class_definitions.employee import Employee
+import datetime
+import locale  # to make formatting the currency a lot easier
+locale.setlocale(locale.LC_ALL, '')
 
 
 class SalariedEmployee(Employee):
@@ -20,17 +23,40 @@ class SalariedEmployee(Employee):
         self._salary = salary
 
     def give_raise(self):
-        pass
+        """
+        When called this method adds $5,000 to the employee pay
+        :return: no return
+        """
+        bonus = 5000
+        self._salary += bonus
+        return self._salary
 
     def display(self):
-        pass
+        """
+        Creates a nice, well-formatted output string
+        :return: a string
+        """
+        date = self._start_date.strftime("%m-%d-%Y")
+        pay = locale.currency(self._salary, True, True)
+        return (super().display() + "\n{self._phone_number} \nSalary: ".format(self=self)
+                + pay + "\nStart Date: ".format(self=self) + str(date))
 
     def __str__(self):
-        pass
+        date = self._start_date.strftime("%m-%d-%Y")
+        pay = locale.currency(self._salary, True, True)
+        return (super().__str__() + "\n{self._phone_number} \nSalary: ".format(self=self)
+                + pay + "\nStart Date: ".format(self=self) + str(date))
 
     def __repr__(self):
-        pass
+        return super().__repr__() + ", ({self._start_date}), + {self._salary})".format(self=self)
 
 
 if __name__ == '__main__':
-    pass
+    today = datetime.date.today()
+    employee1 = SalariedEmployee("Meeker", "Daniel", '123 Fake St, Des Moines, Iowa', '515-555-5555', today, 40000)
+    print(employee1.display())
+    employee1.give_raise()
+    print(employee1.display())
+    print(repr(employee1))
+    print(employee1)
+    del employee1

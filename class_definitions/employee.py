@@ -20,6 +20,9 @@ class Employee:
         :param address: string
         :param phone_number: string
         """
+        name_characters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-")
+        if not (name_characters.issuperset(last_name) and name_characters.issuperset(first_name)):
+            raise ValueError
         self._last_name = last_name
         self._first_name = first_name
         self._address = address
