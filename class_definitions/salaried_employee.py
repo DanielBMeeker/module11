@@ -64,7 +64,7 @@ class SalariedEmployee(Employee):
         Overrides the repr function so that it mimics the class constructor
         :return:
         """
-        return super().__repr__() + ", ({self._start_date}), + {self._salary})".format(self=self)
+        return super().__repr__() + ", ({self._start_date}), {self._salary})".format(self=self)
 
 
 if __name__ == '__main__':

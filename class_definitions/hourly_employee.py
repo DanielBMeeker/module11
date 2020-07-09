@@ -64,7 +64,7 @@ class HourlyEmployee(Employee):
         Overrides repr function to mimic the constructor of the class
         :return:
         """
-        return super().__repr__() + ", ({self._start_date}), + {self._hourly_pay})".format(self=self)
+        return super().__repr__() + ", ({self._start_date}), {self._hourly_pay})".format(self=self)
 
 
 if __name__ == '__main__':
